@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./public/icons8-collaborating-in-circle-50.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Project Collaboration</title>
+    <script> module.exports = {
+      content: ["./src/**/*.{html,js}"],
+      theme: {
+        extend: {},
+      },
+      plugins: [
+        function ({ addUtilities }) {
+          addUtilities({
+            '.custom-scrollbar': {
+              '&::-webkit-scrollbar': {
+                height: '8px',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                borderRadius: '10px',
+              },
+              '&::-webkit-scrollbar-track': {
+                background: 'transparent',
+              },
+            },
+          });
+        },
+      ],
+    }
+    
+
+    </script>
+   
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
