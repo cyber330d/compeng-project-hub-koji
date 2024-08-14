@@ -168,6 +168,7 @@ const SingleGroup = () => {
          {project ? (
             <>
                <div className="w-11/12 md:w-10/12 lg:w-6/12 m-auto shadow">
+                  
                   <div className="px-3">
                      <span className="text-sm text-gray-500 hidden">Project Title</span> 
                      <p className="text-xl font-bold py-1">

@@ -46,7 +46,11 @@ const SinglePersonalProject = () => {
     <>
       <NavBar />
       <div className="single-project-container w-full mt-2">
-         { project ? (         <div className="w-11/12 md:w-10/12 lg:w-6/12 m-auto shadow">
+         { project ? (         
+            <div className="w-11/12 md:w-10/12 lg:w-6/12 m-auto shadow">
+            <div className="">
+               <img src={project.project_img_url} alt="" className="max-h-96 w-full object-contain hover:scale-105 transition-transform duration-300" />
+            </div>
             <div className="px-3">
                {/* <span className="text-sm text-gray-500">Project Title</span>  */}
                <p className="text-2xl font-bold">

@@ -47,7 +47,7 @@ const GroupPage = () => {
       <NavBar />
       {loading && <FakeSpinner />}
       <div className="container w-full mx-1 mt-2">
-         <p className="font-mono font-bold text-lg border rounded-full p-1 px-2 w-11/12 m-auto">Groups Project</p>
+         <p className="font-bold text-gray-700 space-mono text-2xl p-1 px-2 w-11/12 m-auto">Groups Project</p>
          <div className="body w-11/12 md:w-8/12 m-auto">
             { groups.length > 0 && groups.map((project, index) => (
                <NavLink key={index} to={`/single-group/${project.project_id}`}>

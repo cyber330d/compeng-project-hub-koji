@@ -6,6 +6,7 @@ import { API_BASE_URL } from "../assets/Proxy"
 import axios from "axios"
 import { UserContext } from '../context/UsersContext';
 import FakeSpinner from '../components/FakeSpinner'
+import HeadText from "../components/HeadText"
 
 
 const MyProject = () => {
@@ -65,7 +66,7 @@ const MyProject = () => {
       <NavBar />
       {loading && <FakeSpinner />}
       <div className="container w-full mx-1 mt-2">
-         <p className="font-mono font-bold text-lg border rounded-full p-1 px-2 w-11/12 m-auto">My Projects</p>
+         <HeadText text={'My Project'}/>
          <div className="body w-11/12 md:w-8/12 m-auto">
             { projectList.length > 0 && projectList.map((project, index) => (
                <NavLink key={index} to={`/my-project/${project.project_id}`}>

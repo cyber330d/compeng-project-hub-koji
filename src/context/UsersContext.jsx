@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
 
    const getUser = () => {
       setLoading(true)
-
+      
       axios.get(`${API_BASE_URL}/api/user`, {
          headers: {
             'Authorization': `Bearer ${collab_token}`,
