@@ -38,6 +38,7 @@ const SingleGroup = () => {
          axios.get(`${API_BASE_URL}/api/group-info/${id}`)
          .then((response) => {
             console.log(response.data)
+            setPeople(response.data.people)
          })
          .catch((error) => {
             console.log(error.response.data.message)
@@ -168,9 +169,16 @@ const SingleGroup = () => {
          {project ? (
             <>
                <div className="w-11/12 md:w-10/12 lg:w-6/12 m-auto shadow">
-                  
+                  <div className="border p-2 flex justify-between">
+                     <NavLink to='/my-project' className="flex items-center text-sm shadow p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
+                        <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
+                        </svg>
+                        <span className=''>back</span>
+                     </NavLink>
+                  </div>
                   <div className="px-3">
-                     <span className="text-sm text-gray-500 hidden">Project Title</span> 
+                     <span className="text-xs font-semibold text-gray-500">Project title</span> 
                      <p className="text-xl font-bold py-1">
                         {project.project_title}
                      </p>
@@ -182,8 +190,14 @@ const SingleGroup = () => {
                   <div className="">
                      <span className="p-1 rounded-full text-xs bg-gray-800 text-gray-100 hidden">Members :</span>
                      <div className="flex gap-3 flex-wrap mt-2 text-xs md:text-sm md:font-semibold">
-                        <span className="p-1 bg-gray-100 text-gray-900 hover:bg-gray-200">Erasmus</span>
-                        <span className="p-1 bg-gray-100 text-gray-900 hover:bg-gray-200">Samaila</span>
+                     {people.length > 0 && (
+                        people.map((person, index) => (
+                           <span key={index} className="p-1 bg-gray-100 text-gray-900 hover:bg-gray-200">
+                              {person.name}
+                           </span>
+                        ))
+                     )}
+                        
                      </div>
                      
                   </div>
@@ -214,11 +228,11 @@ const SingleGroup = () => {
                               </svg>
                               <span>{proposal.name}</span>
                               <span className="border-l-2 pl-2">{formatDate(proposal.created_at)}</span>
+                              <span className="border-l-2 pl-2 text-xs text-green-500">Admin</span>
                            </div>
                            <p className="bg-gray-800 text-gray-200 p-2 mt-2 font-semibold">{proposal.proposal}</p>  
                            {(proposal && proposal.user_id) === (user && user.user_id) && <button onClick={() => deleteProposal(proposal.proposal_id)} className="text-xs mt-2 bg-gray-950 rounded-full px-2 font-mono text-red-500 p-1">
                               delete
-
                            </button>}
                         </div>
                      ))

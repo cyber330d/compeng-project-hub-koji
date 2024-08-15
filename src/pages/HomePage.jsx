@@ -4,9 +4,12 @@ import { NavLink } from "react-router-dom"
 import SingleShowRoomCard from "../components/SingleShowRoomCard"
 import HomeHeadCard from "../components/HomeHeadCard"
 import DarkCardContainer from "../components/DarkCardContainer"
+import Footer from "../components/Footer"
 
 
 const HomePage = () => {
+
+  const token = localStorage.getItem('collab_token')
 
   const moveLeft = () => {
     console.log('left')
@@ -24,12 +27,7 @@ const HomePage = () => {
       <section className="section">
          <HomeHeadCard /> 
          <DarkCardContainer conatinerTitle={'Driving Vision'} />
-
-         <div className="project-show-gallery-container p-3 py-10 w-full">
-            <h1 className="text-3xl font-semibold">Project Show Room</h1>
-                  
-         </div>
-       
+         <Footer />
       </section>
 
     </>

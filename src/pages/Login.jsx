@@ -7,6 +7,7 @@ import { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
 import { API_BASE_URL } from '../assets/Proxy'
 import { UserContext } from '../context/UsersContext'
+import MiniIcon from "../assets/images/mini-icon.png"
 
 const Login = () => {
   const navigate = useNavigate()
@@ -105,21 +106,17 @@ const Login = () => {
       )}
 
       <div className="auth-container w-full">
-        <div className="auth-body bg-gray-100 border rounded w-10/12 md:w-6/12 m-auto mt-20">
-          <div className="flex justify-between align-center p-2">
-            <p className="font-bold text-lg">Register</p>
-            <p>
-              <NavLink to="/register" className="underline text-emerald-500">
-                I don't have an account
-              </NavLink>
-            </p>
+        <div className="auth-body shadow border rounded w-80 m-auto mt-20">
+          <div className="flex items-center justify-center gap-2 p-2">
+            <img src={MiniIcon} alt="" />
+            <p className="font-bold text-lg grotesk">Sign-In</p>
           </div>
           <div className="w-full">
             <form onSubmit={submitForm} className="w-full p-3">
               <div className="mt-2">
                 <input
                   name="email"
-                  className="w-full p-2.5 rounded border"
+                  className="w-full p-2 rounded border"
                   type="text"
                   placeholder="Enter Email"
                   onChange={handleInputChange}
@@ -127,7 +124,7 @@ const Login = () => {
               </div>
               <div className="mt-2">
                 <input
-                  className="w-full p-2.5 rounded border"
+                  className="w-full p-2 rounded border"
                   type="text"
                   name="password"
                   placeholder="Password"
@@ -137,7 +134,7 @@ const Login = () => {
               <div className="mt-2">
                 <button
                   disabled={loading}
-                  className="w-full flex justify-center items-center gap-2 bg-gray-900 text-white p-1.5 hover:bg-gray-950 font-semibold h-12 rounded"
+                  className="w-full flex justify-center items-center gap-2 bg-gray-900 text-white p-1.5 hover:bg-gray-950 font-semibold h-10 rounded"
                 >
                   {loading && <div className="">please wait...</div>}
                   {loading && (
@@ -164,6 +161,11 @@ const Login = () => {
                   {!loading && <div className="">Login</div>}
                 </button>
               </div>
+              <p className='mt-2'>
+                <NavLink to="/register" className="underline text-emerald-500 text-sm">
+                  I don't have an account
+                </NavLink>
+              </p>
             </form>
           </div>
         </div>

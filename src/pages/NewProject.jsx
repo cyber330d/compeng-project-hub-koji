@@ -147,6 +147,14 @@ const NewProject = () => {
       {/*  */}
       <div className="mx-2 mt-2 mb-20">
         <div className="bg-white w-full md:w-8/12 m-auto shadow border rounded">
+        <div className="border p-2 flex justify-between">
+          <NavLink to='/my-project' className="flex items-center text-sm shadow p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+              <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+            </svg>
+            <span className=''>back</span>
+          </NavLink>
+        </div>
           <h1 className="font-bold p-3 text-lg text-gray-700">Create New Project</h1>
           <div className="new-project-body w-full">
             <form onSubmit={handleSubmit}>

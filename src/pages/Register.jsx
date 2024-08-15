@@ -6,6 +6,9 @@ import { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
 import { API_BASE_URL } from '../assets/Proxy'
 import { UserContext } from '../context/UsersContext'
+import MiniIcon from "../assets/images/mini-icon.png"
+import ErrorAlert from '../components/ErrorAlert'
+import SuccessAlert from '../components/SuccessAlert'
 
 
 const Register = () => {
@@ -77,6 +80,7 @@ const Register = () => {
       setSuccessAlert(false)
     }, 3000)
   }
+  
   const showErrorAlert = (message) => {
     setMessage(message)
     setErrorAlert(true)
@@ -88,48 +92,29 @@ const Register = () => {
   return (
     <>
       <NavBar />
-      { successAlert === true ? <div className="Success-Alert bg-blue-800 w-full md:w-8/12 m-auto shadow border rounded flex items-center gap-2 my-2 p-2 text-white fixed top-0 left-1/2 transform -translate-x-1/2 mt-4">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-5">
-              <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
-            </svg>
-          </span>
-          <p className='font-semibold'>{message}</p>
-        </div>  : '' }
+      { successAlert === true ? <SuccessAlert message={message} />  : '' }
       {/*  */}
-      { errorAlert &&  <div className="Error Alert bg-pink-800 w-full md:w-8/12 m-auto shadow border rounded flex items-center gap-2 my-2 p-2 fixed top-0 left-1/2 transform -translate-x-1/2 mt-4">
-          <span className=''>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-            <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" />
-          </svg>
-          </span>
-          <p className='font-semibold'>{message}</p>
-      </div> }
+      { errorAlert &&  <ErrorAlert message={message} /> }
       {/*  */}
-
       <div className="auth-container w-full">
-          <div className="auth-body bg-gray-100 border rounded w-10/12 md:w-6/12 m-auto mt-20">
-              <div className="flex justify-between align-center p-2">
-                <p className='font-bold text-lg'>Register</p>
-                <p>
-                  <NavLink to='/login' className='underline text-emerald-500'>
-                      I have an account 
-                  </NavLink>
-                </p>
-              </div>
+          <div className="auth-body shadow border rounded w-80 m-auto mt-10">
+          <div className="flex items-center justify-center gap-2 p-2">
+            <img src={MiniIcon} alt="" />
+            <p className="font-bold text-lg grotesk">Sign Up</p>
+          </div>
               <div className="w-full">
                 <form onSubmit={submitForm} className='w-full p-3'>
                   <div className="mt-2">
-                    <input name='name' className='w-full p-2.5 rounded border' type="text" placeholder='Enter Name' onChange={handleInputChange}/>
+                    <input name='name' className='w-full p-2 rounded border' type="text" placeholder='Enter Name' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
-                    <input name='email' className='w-full p-2.5 rounded border' type="text" placeholder='Enter Email' onChange={handleInputChange}/>
+                    <input name='email' className='w-full p-2 rounded border' type="text" placeholder='Enter Email' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
-                    <input name='reg_number' className='w-full p-2.5 rounded border' type="text" placeholder='Enter Registration Number' onChange={handleInputChange}/>
+                    <input name='reg_number' className='w-full p-2 rounded border' type="text" placeholder='Enter Registration Number' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
-                    <input className='w-full p-2.5 rounded border' type="number" name='phone' placeholder='Phone' onChange={handleInputChange}/>
+                    <input className='w-full p-2 rounded border' type="number" name='phone' placeholder='Phone' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
                     <select name="level" id="" className='w-full p-2 border rounded' onChange={handleInputChange} value={formData.level}>
@@ -137,13 +122,13 @@ const Register = () => {
                     </select>
                   </div>
                   <div className="mt-2">
-                    <input className='w-full p-2.5 rounded border' type="text" name='password' placeholder='Password' onChange={handleInputChange}/>
+                    <input className='w-full p-2 rounded border' type="text" name='password' placeholder='Password' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
-                    <input className='w-full p-2.5 rounded border' type="text" name='password_confirmation' placeholder='Confirm Password' onChange={handleInputChange}/>
+                    <input className='w-full p-2 rounded border' type="text" name='password_confirmation' placeholder='Confirm Password' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
-                  <button disabled={loading} className="w-full flex justify-center items-center gap-2 bg-gray-900 text-white p-1.5 hover:bg-gray-950 font-semibold h-12 rounded">
+                  <button disabled={loading} className="w-full flex justify-center items-center gap-2 bg-gray-900 text-white p-1.5 hover:bg-gray-950 font-semibold h-10 rounded">
                     { loading && <div className="">please wait...</div> } 
                     { loading &&  <div role="status">
                         <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -155,11 +140,16 @@ const Register = () => {
                   
                     { !loading && <div className="">Register</div>}
                     </button>
-                    <div className='mt-2 flex items-center gap-1'>
+                    <div className='mt-2 flex items-center gap-1 hidden'>
                       <input type="checkbox" name='check' className='' onChange={handleInputChange}/>
                       <p className='text-xs gray-500'>Agree to all our terms and conditions withoout seeing it ??</p>
                     </div>
                   </div>
+                  <p>
+                  <NavLink to='/login' className='mt-2 text-sm underline text-emerald-500'>
+                      I have an account 
+                  </NavLink>
+                </p>
                 </form>
               </div>
           </div>

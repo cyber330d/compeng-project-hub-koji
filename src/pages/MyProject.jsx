@@ -64,13 +64,29 @@ const MyProject = () => {
   return (
     <>
       <NavBar />
-      {loading && <FakeSpinner />}
+      
       <div className="container w-full mx-1 mt-2">
-         <HeadText text={'My Project'}/>
-         <div className="body w-11/12 md:w-8/12 m-auto">
+        
+        
+         <div className="body w-11/12 md:w-8/12 m-auto"> 
+            <div className="border p-2">
+               <div className="flex justify-between items-center">
+                   <HeadText text={'My Project'}/>
+                   <NavLink to='/new-project'>
+                     <li className="bg-gray-900 text-white p-1 rounded-full gap-1 flex text-sm items-center hover:bg-gray-950 hover:text-gray-50">
+                        <span className="hidden md:flex font-semibold ml-1">Add Project</span>
+                        <span className="bg-gray-950 text-white rounded-full p-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        </span> 
+                     </li>
+                  </NavLink>
+               </div>
+            </div>
+            {loading && <FakeSpinner />}
             { projectList.length > 0 && projectList.map((project, index) => (
                <NavLink key={index} to={`/my-project/${project.project_id}`}>
-               <div  className="card w-full border mt-2 p-2 rounded bg-gray-100 hover:bg-gray-50 hover:shadow">
+               <div className="card w-full border mt-2 p-2 rounded bg-gray-100 hover:bg-gray-50 hover:shadow">
                   <span className="rounded-full bg-gray-300 p-0.5 text-green-500 text-xs font-semibold px-3 w-">{project.category}</span>
                   <div className="project-title text-lg font-bold">{project.project_title}</div>
                   <div className="info mt-2 bg-gray-50 p-2 w-5/12">

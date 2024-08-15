@@ -3,7 +3,7 @@
 const HeadText = ({ text }) => {
   return (
     <div>
-      <p className="space-mono font-bold text-2xl text-gray-700 p-1 px-2 w-11/12 md:w-8/12 m-auto">{text}</p>
+      <p className={`grotesk font-semibold text-lg text-gray-900`}>{text}</p>
     </div>
   )
 }

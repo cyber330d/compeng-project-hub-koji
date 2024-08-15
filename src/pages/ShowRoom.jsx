@@ -7,6 +7,7 @@ import { API_BASE_URL } from "../assets/Proxy";
 import { UserContext } from "../context/UsersContext";
 import HeadText from "../components/HeadText";
 import FakeSpinner from "../components/FakeSpinner"
+import Footer from "../components/Footer";
 
 const ShowRoom = () => {
   const navigate = useNavigate();
@@ -55,13 +56,24 @@ const ShowRoom = () => {
       <NavBar />
       {/* Search Bar */}
       <div className="mt-1">
-        {user &&  <HeadText text={user && user.name}/>}
+        
 
       </div>
       {/* Search Bar */}
 
       <div className="container w-11/12 m-auto mt-2 mb-20">
+        
         <div className="body w-full md:w-8/12 m-auto">
+        <div className="border p-2">
+          <div className="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+            <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
+            </svg>
+            {user &&  <HeadText style={'white'} text={user && user.name}/>}
+
+          </div>
+        
+        </div>
           {projectList.length > 0 ? projectList.map((project, index) => (
             <NavLink key={index} to={`/single-project/${project.project_id}`}>
               <div className="card w-full border mt-2 p-2 rounded bg-gray-100 hover:bg-gray-50 hover:shadow">
@@ -76,6 +88,7 @@ const ShowRoom = () => {
           )): <FakeSpinner />}
         </div>
       </div>
+      <Footer />
     </>
   );
 };
