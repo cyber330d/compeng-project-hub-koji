@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
 
    const getUser = () => {
       setLoading(true)
-      
+
       axios.get(`${API_BASE_URL}/api/user`, {
          headers: {
             'Authorization': `Bearer ${collab_token}`,
@@ -67,10 +67,10 @@ export const UserProvider = ({ children }) => {
       axios.post(`${API_BASE_URL}/api/login`,formData)
       .then((response) => {
          console.log(response)
-         if(response.statusText === 'OK'){
-           setLogin(true)
-           setUser(response.data.user)
-            localStorage.setItem('collab_token' ,response.data.token)
+         if(response.data.status === true){
+            console.log(response.data.token)
+            setUser(response.data.user)
+            localStorage.setItem('collab_token', response.data.token)
             setLogin(true)
          }
       })

@@ -26,6 +26,12 @@ const Login = () => {
   }, [token, navigate])
 
   useEffect(() => {
+    if(login === true){
+      navigate('/showroom')
+    }
+  }, [login])
+
+  useEffect(() => {
     if (errMsg !== null && errMsg !== '') {
       showErrorAlert(errMsg)
       setTimeout(() => {
