@@ -40,9 +40,11 @@ const ShowRoom = () => {
         });
     };
 
-    getProjects();
+    if(projectList.length < 0 || projectList.length === 0){
+       getProjects();
+    }
+   
   }, [user, setProjectList]);
-
 
 
   // Handles the search functions
@@ -97,7 +99,14 @@ const ShowRoom = () => {
         
         </div>
           <div>
-             {searchProjects.length > 0 ? <button onClick={clearSearchProjects} className="text-gray-600 text-xs">clear search</button>: ''}
+             {searchProjects.length > 0 ? 
+             <button onClick={clearSearchProjects} className="hover:text-red-500 text-gray-600 border p-0.5 text-xs flex items-center gap-1">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+
+              clear search
+              </button>: ''}
           </div>
           {searchProjects.length > 0 ? searchProjects.map((project, index) => (
             <NavLink key={index} to={`/single-project/${project.project_id}`}>
