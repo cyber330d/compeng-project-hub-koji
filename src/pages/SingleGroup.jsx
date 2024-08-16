@@ -228,7 +228,7 @@ const SingleGroup = () => {
                               </svg>
                               <span>{proposal.name}</span>
                               <span className="border-l-2 pl-2">{formatDate(proposal.created_at)}</span>
-                              <span className="border-l-2 pl-2 text-xs text-green-500">Admin</span>
+                              {/* <span className="border-l-2 pl-2 text-xs text-green-500">Admin</span> */}
                            </div>
                            <p className="bg-gray-800 text-gray-200 p-2 mt-2 font-semibold">{proposal.proposal}</p>  
                            {(proposal && proposal.user_id) === (user && user.user_id) && <button onClick={() => deleteProposal(proposal.proposal_id)} className="text-xs mt-2 bg-gray-950 rounded-full px-2 font-mono text-red-500 p-1">

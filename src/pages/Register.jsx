@@ -111,7 +111,7 @@ const Register = () => {
                     <input name='email' className='w-full p-2 rounded border' type="text" placeholder='Enter Email' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
-                    <input name='reg_number' className='w-full p-2 rounded border' type="password" placeholder='Enter Registration Number' onChange={handleInputChange}/>
+                    <input name='reg_number' className='w-full p-2 rounded border' type="text" placeholder='Enter Registration Number' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2"> 
                     <input className='w-full p-2 rounded border' type='number' name='phone' placeholder='Phone' onChange={handleInputChange}/>

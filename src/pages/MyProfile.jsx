@@ -49,8 +49,8 @@ const MyProfile = () => {
            <p className="border-t p-2">{user && user.reg_number}</p>
            <p className="border-t p-2">{user && user.phone}</p>
            <p className="border-t p-2">{user && user.level}</p>
-           <div className="border-t p-2"></div>
-           <button className="p-2 bg-gray-900 text-white text-sm rounded" disabled>Update Profile</button>
+           {/* <div className="border-t p-2"></div> */}
+           {/* <button className="p-2 bg-gray-900 text-white text-sm rounded" disabled>Update Profile</button> */}
          </div>
         </div>
     </>
