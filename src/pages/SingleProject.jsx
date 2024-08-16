@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import NavBar from "../components/NavBar"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, NavLink } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { API_BASE_URL } from "../assets/Proxy"
 import AbuPng from '../assets/images/abu.png'
 import { UserContext } from "../context/UsersContext"
 import FakeSpinner from "../components/FakeSpinner"
+import Footer from "../components/Footer"
 import MiniSpinner from "../components/MiniSpinner"
 
 
@@ -22,7 +23,19 @@ const SingleProject = () => {
    const [confirm, setConfirm] = useState(false)
    const [btnLoading, setBtLoading] = useState(true)
 
+
    useEffect(() => {
+      if(token){
+         console.log(token)
+         if(user === null){
+            getUser()
+         }  
+      }else {
+         console.log('no token token')
+      }
+
+
+
       axios.get(`${API_BASE_URL}/api/single-project/${id}`)
       .then((response) => {
          setProject(response.data.project)
@@ -33,15 +46,9 @@ const SingleProject = () => {
       .finally(() => {
          setLoading(false)
       })
-   }, [])
-
-   useEffect(() => {
-
-      if(token){
-         getUser()
-      }
 
    }, [])
+
 
    useEffect(() => {
       const data = {
@@ -52,7 +59,6 @@ const SingleProject = () => {
       const confirmIfMember = () => {
          axios.post(`${API_BASE_URL}/api/check-membership`, data)
          .then((response) => {
-            if(response.statusText === 'OK'){
                setConfirm(true)
                if(response.data.member === true){
                   setMember(true)
@@ -61,11 +67,10 @@ const SingleProject = () => {
                   setMember(false)
                   console.log('not member')
                }
-            }
          })
       }
-
       confirmIfMember()
+
    }, [project, user])
 
    useEffect(() => {
@@ -110,10 +115,18 @@ const SingleProject = () => {
       <div className="single-project-container w-full mt-2">
       {/* <span className="bg-gray-200 text-black p-2 ml-2 m-1">back</span> */}
          {project ? (<div className="w-11/12 md:w-10/12 lg:w-6/12 m-auto shadow">
+            <div className="border p-2 flex justify-between">
+               <NavLink to='/showroom' className="flex items-center shadow text-sm p-1">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
+               <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
+               </svg>
+               <span className=''>back</span>
+               </NavLink>
+            </div>
               <div className="px-3">
                  {/* <img className="w-28" src={AbuPng} alt="" /> */}
                  <div className="">
-                     <img src={project.project_img_url} alt="" className="max-h-96 w-full object-contain hover:scale-105 transition-transform duration-300" />
+                     <img src={project.project_img_url} alt="" className="max-h-96 w-full object-contain transition-transform duration-300" />
                   </div>
                  <span className="text-sm text-gray-500">Project Title</span> 
                  <p className="text-2xl font-bold">
@@ -156,6 +169,7 @@ const SingleProject = () => {
          </div>) : <FakeSpinner /> }
          
       </div>
+      <Footer />
    </>
 
 )

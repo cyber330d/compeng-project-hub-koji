@@ -65,9 +65,8 @@ const MyProject = () => {
     <>
       <NavBar />
       
-      <div className="container w-full mx-1 mt-2">
-        
-        
+      <div className="w-full mx-1 mt-2">
+               
          <div className="body w-11/12 md:w-8/12 m-auto"> 
             <div className="border p-2">
                <div className="flex justify-between items-center">

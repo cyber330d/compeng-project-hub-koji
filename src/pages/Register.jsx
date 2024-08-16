@@ -111,10 +111,10 @@ const Register = () => {
                     <input name='email' className='w-full p-2 rounded border' type="text" placeholder='Enter Email' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
-                    <input name='reg_number' className='w-full p-2 rounded border' type="text" placeholder='Enter Registration Number' onChange={handleInputChange}/>
+                    <input name='reg_number' className='w-full p-2 rounded border' type="password" placeholder='Enter Registration Number' onChange={handleInputChange}/>
                   </div>
-                  <div className="mt-2">
-                    <input className='w-full p-2 rounded border' type="number" name='phone' placeholder='Phone' onChange={handleInputChange}/>
+                  <div className="mt-2"> 
+                    <input className='w-full p-2 rounded border' type='number' name='phone' placeholder='Phone' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
                     <select name="level" id="" className='w-full p-2 border rounded' onChange={handleInputChange} value={formData.level}>
@@ -122,10 +122,10 @@ const Register = () => {
                     </select>
                   </div>
                   <div className="mt-2">
-                    <input className='w-full p-2 rounded border' type="text" name='password' placeholder='Password' onChange={handleInputChange}/>
+                    <input className='w-full p-2 rounded border' type="password" name='password' placeholder='Password' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
-                    <input className='w-full p-2 rounded border' type="text" name='password_confirmation' placeholder='Confirm Password' onChange={handleInputChange}/>
+                    <input className='w-full p-2 rounded border' type="password" name='password_confirmation' placeholder='Confirm Password' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
                   <button disabled={loading} className="w-full flex justify-center items-center gap-2 bg-gray-900 text-white p-1.5 hover:bg-gray-950 font-semibold h-10 rounded">

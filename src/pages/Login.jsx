@@ -125,7 +125,7 @@ const Login = () => {
               <div className="mt-2">
                 <input
                   className="w-full p-2 rounded border"
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="Password"
                   onChange={handleInputChange}
