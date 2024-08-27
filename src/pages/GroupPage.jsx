@@ -6,6 +6,7 @@ import { UserContext } from "../context/UsersContext"
 import FakeSpinner from "../components/FakeSpinner"
 import axios from "axios"
 import HeadText from "../components/HeadText"
+import ShowRoomCard from "../layouts/ShowRoomCard"
 
 
 const GroupPage = () => {
@@ -52,15 +53,14 @@ const GroupPage = () => {
               <HeadText text={'Groups'} />
             </div>
             {loading && <FakeSpinner />}
-            { groups.length > 0 && groups.map((project, index) => (
-               <NavLink key={index} to={`/single-group/${project.project_id}`}>
-               <div  className="card w-full border mt-2 p-2 rounded bg-gray-100 hover:bg-gray-50 hover:shadow">
-                  <span className="rounded-full bg-gray-300 p-0.5 text-green-500 text-xs font-semibold px-3 w-">{project.category}</span>
-                  <div className="project-title text-lg font-bold">{project.project_title}</div>
-                
-               </div>
-            </NavLink>
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 place-content-center">
+              { groups.length > 0 && groups.map((project, index) => (
+                <NavLink key={index} to={`/single-group/${project.project_id}`}>
+                  <ShowRoomCard project={project} />
+                </NavLink>
+              ))} 
+            </div>
+           
          
          </div>
       </div> 

@@ -106,35 +106,47 @@ const Login = () => {
       )}
 
       <div className="auth-container w-full">
-        <div className="auth-body shadow border rounded w-80 m-auto mt-20">
-          <div className="flex items-center justify-center gap-2 p-2">
-            <img src={MiniIcon} alt="" />
-            <p className="font-bold text-lg grotesk">Sign-In</p>
+        <div className="auth-body rounded w-96 m-auto mt-20">
+          <div className="text-3xl mb-4 grotesk font-bold flex justify-center flex-col items-center text-center grotesk">
+            {/* <img src={MiniIcon} alt="" className='w-10'/> */}
+            <p className='grotesk'> Compeng Collaboration Platfrom </p>
+          </div>
+          <div className="">
+            <p className="font-bold text-lg grotesk pl-3 hidden">Sign-In</p>
           </div>
           <div className="w-full">
-            <form onSubmit={submitForm} className="w-full p-3">
-              <div className="mt-2">
+            <form onSubmit={submitForm} className="w-full p-3 ">
+              <div className="mt-2 flex">
+                <span className='flex items-center h-10 border px-2 bg-green-50 rounded-l'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25" />
+                </svg>
+                </span>
                 <input
                   name="email"
-                  className="w-full p-2 rounded border"
+                  className="w-full p-2 border font-noraml grotesk h-10 rounded-r focus:border-none"
                   type="text"
                   placeholder="Enter Email"
                   onChange={handleInputChange}
                 />
               </div>
-              <div className="mt-2">
+              <div className="mt-3 flex">
+                <span className='flex items-center h-10 border px-2 bg-green-50 rounded-l'> 
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                  </svg>
+                </span>
                 <input
-                  className="w-full p-2 rounded border"
+                  className="w-full p-2 border font-noraml grotesk h-10 rounded-r focus:border-none"
                   type="password"
                   name="password"
                   placeholder="Password"
                   onChange={handleInputChange}
                 />
               </div>
-              <div className="mt-2">
+              <div className="mt-3">
                 <button
                   disabled={loading}
-                  className="w-full flex justify-center items-center gap-2 bg-gray-900 text-white p-1.5 hover:bg-gray-950 font-semibold h-10 rounded"
+                  className="w-full flex justify-center items-center gap-2 bg-green-800 text-white p-1.5 hover:bg-green-900 font-normal h-10 rounded"
                 >
                   {loading && <div className="">please wait...</div>}
                   {loading && (
@@ -158,14 +170,14 @@ const Login = () => {
                       <span className="sr-only">Loading...</span>
                     </div>
                   )}
-                  {!loading && <div className="">Login</div>}
+                  {!loading && <div className="font-normal">Login</div>}
                 </button>
               </div>
-              <p className='mt-2'>
-                <NavLink to="/register" className="underline text-emerald-500 text-sm">
-                  I don't have an account
+              {/* <p className='mt-2 font-mono'>
+                <NavLink to="/register" className="text-blue-500 text-sm">
+                  create account
                 </NavLink>
-              </p>
+              </p> */}
             </form>
           </div>
         </div>
