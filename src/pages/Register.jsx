@@ -97,38 +97,63 @@ const Register = () => {
       { errorAlert &&  <ErrorAlert message={message} /> }
       {/*  */}
       <div className="auth-container w-full">
-          <div className="auth-body shadow border rounded w-80 m-auto mt-10">
-          <div className="flex items-center justify-center gap-2 p-2">
-            <img src={MiniIcon} alt="" />
-            <p className="font-bold text-lg grotesk">Sign Up</p>
-          </div>
+          <div className="auth-body rounded w-96 m-auto mt-10">
+            <div className="text-3xl mb-4 grotesk font-bold flex justify-center flex-col items-center text-center grotesk">
+              {/* <img src={MiniIcon} alt="" className='w-10'/> */}
+              <p className='grotesk'> Compeng Collaboration Platfrom </p>
+            </div>
               <div className="w-full">
                 <form onSubmit={submitForm} className='w-full p-3'>
-                  <div className="mt-2">
-                    <input name='name' className='w-full p-2 rounded border' type="text" placeholder='Enter Name' onChange={handleInputChange}/>
+                  <div className="mt-2 flex">
+                    <span className='flex items-center h-10 border px-2 bg-gray-50 rounded-l'>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+                    </span>
+                    <input name='name' className='w-full p-2 rounded-r border h-10 focus:border-green-100' type="text" placeholder='Enter Name' onChange={handleInputChange}/>
                   </div>
-                  <div className="mt-2">
-                    <input name='email' className='w-full p-2 rounded border' type="text" placeholder='Enter Email' onChange={handleInputChange}/>
+                  <div className="mt-2 flex">
+                    <span className='flex items-center h-10 border px-2 bg-gray-50 rounded-l'>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25" />
+                      </svg>
+                    </span>
+                    <input name='email' className='w-full p-2 rounded-r h-10 border' type="text" placeholder='Enter Email' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
                     <input name='reg_number' className='w-full p-2 rounded border' type="text" placeholder='Enter Registration Number' onChange={handleInputChange}/>
                   </div>
-                  <div className="mt-2"> 
-                    <input className='w-full p-2 rounded border' type='number' name='phone' placeholder='Phone' onChange={handleInputChange}/>
+                  <div className="mt-2 flex">
+                    <span className='flex items-center h-10 border px-2 bg-gray-50 rounded-l'>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                      </svg>
+                    </span> 
+                    <input className='w-full p-2 rounded-r border h-10' type='number' name='phone' placeholder='Phone' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
                     <select name="level" id="" className='w-full p-2 border rounded' onChange={handleInputChange} value={formData.level}>
                       <option value="Undergraduate">Undergraduate</option>
                     </select>
                   </div>
-                  <div className="mt-2">
-                    <input className='w-full p-2 rounded border' type="password" name='password' placeholder='Password' onChange={handleInputChange}/>
+                  <div className="mt-2 flex">
+                  <span className='flex items-center h-10 border px-2 bg-gray-50 rounded-l'> 
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                      </svg>
+                    </span>
+                    <input className='w-full p-2 rounded-r border h-10' type="password" name='password' placeholder='Password' onChange={handleInputChange}/>
+                  </div>
+                  <div className="mt-2 flex">
+                    <span className='flex items-center h-10 border px-2 bg-green-50 rounded-l'> 
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                      </svg>
+                    </span>
+                    <input className='w-full p-2 rounded-r border h-10' type="password" name='password_confirmation' placeholder='Confirm Password' onChange={handleInputChange}/>
                   </div>
                   <div className="mt-2">
-                    <input className='w-full p-2 rounded border' type="password" name='password_confirmation' placeholder='Confirm Password' onChange={handleInputChange}/>
-                  </div>
-                  <div className="mt-2">
-                  <button disabled={loading} className="w-full flex justify-center items-center gap-2 bg-gray-900 text-white p-1.5 hover:bg-gray-950 font-semibold h-10 rounded">
+                  <button disabled={loading} className="w-full flex justify-center items-center gap-2 bg-green-800 text-white p-1.5 hover:bg-green-900 font-normal h-10 rounded grotesk">
                     { loading && <div className="">please wait...</div> } 
                     { loading &&  <div role="status">
                         <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +163,7 @@ const Register = () => {
                         <span className="sr-only">Loading...</span>
                     </div>}
                   
-                    { !loading && <div className="">Register</div>}
+                    { !loading && <div className="grotesk">Register</div>}
                     </button>
                     <div className='mt-2 flex items-center gap-1 hidden'>
                       <input type="checkbox" name='check' className='' onChange={handleInputChange}/>
@@ -146,9 +171,9 @@ const Register = () => {
                     </div>
                   </div>
                   <p>
-                  <NavLink to='/login' className='mt-2 text-sm underline text-emerald-500'>
+                  {/* <NavLink to='/login' className='mt-2 text-sm underline text-emerald-500'>
                       I have an account 
-                  </NavLink>
+                  </NavLink> */}
                 </p>
                 </form>
               </div>

@@ -31,3 +31,9 @@ export const handleAxiosError = (error) => {
   
   return `${month}/${day}/${year}`;
 }
+ 
+export const shortenText = (text) => {
+  if (!text) return '';
+  const words = text.split(' ');
+  return words.length > 10 ? words.slice(0, 13).join(' ') + '...' : text;
+};

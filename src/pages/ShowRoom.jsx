@@ -8,6 +8,10 @@ import { UserContext } from "../context/UsersContext";
 import HeadText from "../components/HeadText";
 import FakeSpinner from "../components/FakeSpinner"
 import Footer from "../components/Footer";
+import ShowRoomCard from "../layouts/ShowRoomCard";
+
+import bgImage from '../assets/images/bg-1.jpeg';
+
 
 const ShowRoom = () => {
   const navigate = useNavigate();
@@ -49,6 +53,9 @@ const ShowRoom = () => {
 
   // Handles the search functions
   const handleSearch = async () => {
+      if(keyword === '' || keyword === null){
+        return false;
+      }
       axios.get(`${API_BASE_URL}/api/projects/search`, {
         params: { keyword },
       })
@@ -62,6 +69,12 @@ const ShowRoom = () => {
       })
   };
 
+  useEffect(() => {
+    if(keyword === '' || !keyword){
+      clearSearchProjects()
+    }
+  }, [keyword])
+
 
   // Clear Search Project
   const clearSearchProjects = () => {
@@ -70,71 +83,56 @@ const ShowRoom = () => {
   }
 
   return (
-    <>
+    <div>
       <NavBar />
       {/* Search Bar */}
       <div className="mt-1">
       </div>
       {/* Search Bar */}
 
-      <div className="container w-11/12 m-auto mt-2 mb-20">
+      <div className="container w-11/12 m-auto mb-20">
         
         <div className="body w-full md:w-8/12 m-auto">
-        <div className="p-2">
+        <div className="">
           <div className="flex items-center">
             <input
               type="text"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
               placeholder="Search projects..."
-              className="p-2 border rounded-l-md border-gray-300 focus:outline-none focus:border-indigo-500 w-full"
+              className="p-2 border rounded-l-md border-gray-300 focus:outline-none focus:border-indigo-900 w-full h-10"
             />
             <button
               onClick={handleSearch}
-              className="p-2 bg-indigo-500 text-white rounded-r-md hover:bg-indigo-600"
+              className="p-2 h-10 bg-indigo-500 text-white rounded-r-full hover:bg-indigo-900 "
             >
               Search
             </button>
           </div>
-        
         </div>
-          <div>
+          <div className="mt-1 rounded">
              {searchProjects.length > 0 ? 
-             <button onClick={clearSearchProjects} className="hover:text-red-500 text-gray-600 border p-0.5 text-xs flex items-center gap-1">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-
+             <button onClick={clearSearchProjects} className="hover:text-red-500 text-gray-600 border rounded-full p-0.5 px-1 text-sm flex items-center">
               clear search
               </button>: ''}
           </div>
-          {searchProjects.length > 0 ? searchProjects.map((project, index) => (
-            <NavLink key={index} to={`/single-project/${project.project_id}`}>
-              <div className="card w-full border mt-2 p-2 rounded bg-gray-100 hover:bg-gray-50 hover:shadow">
-                <span className="rounded-full bg-gray-300 p-0.5 text-green-500 text-xs font-semibold px-3">{project.category}</span>
-                <div className="project-title text-lg font-bold">{project.project_title}</div>
-                <div className="info mt-2 bg-gray-50 p-2 w-5/12">
-                  <p className="text-xs font-bold text-gray-500">{project.author}</p>
-                  <p className="text-xs mt-0.5">{formatDate(project.created_at)}</p>
-                </div>
-              </div>
-            </NavLink>
-          )) : projectList.length > 0 ? projectList.map((project, index) => (
-            <NavLink key={index} to={`/single-project/${project.project_id}`}>
-              <div className="card w-full border mt-2 p-2 rounded bg-gray-100 hover:bg-gray-50 hover:shadow">
-                <span className="rounded-full bg-gray-300 p-0.5 text-green-500 text-xs font-semibold px-3">{project.category}</span>
-                <div className="project-title text-lg font-bold">{project.project_title}</div>
-                <div className="info mt-2 bg-gray-50 p-2 w-5/12">
-                  <p className="text-xs font-bold text-gray-500">{project.author}</p>
-                  <p className="text-xs mt-0.5">{formatDate(project.created_at)}</p>
-                </div>
-              </div>
-            </NavLink>
-          )): <FakeSpinner />}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 place-content-center">
+            {searchProjects.length > 0 ? searchProjects.map((project, index) => (
+                <NavLink key={index} to={`/single-project/${project.project_id}`}>
+                   <ShowRoomCard project={project} />
+                </NavLink>
+              )) : projectList.length > 0 ? projectList.map((project, index) => (
+                <NavLink key={index} to={`/single-project/${project.project_id}`}>
+                  <ShowRoomCard project={project} />
+                </NavLink>
+              )): <FakeSpinner />}
+
+          </div>
+        
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

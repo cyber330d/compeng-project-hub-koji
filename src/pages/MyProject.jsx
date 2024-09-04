@@ -7,6 +7,7 @@ import axios from "axios"
 import { UserContext } from '../context/UsersContext';
 import FakeSpinner from '../components/FakeSpinner'
 import HeadText from "../components/HeadText"
+import ShowRoomCard from "../layouts/ShowRoomCard"
 
 
 const MyProject = () => {
@@ -83,18 +84,14 @@ const MyProject = () => {
                </div>
             </div>
             {loading && <FakeSpinner />}
-            { projectList.length > 0 && projectList.map((project, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 place-content-center">
+               { projectList.length > 0 && projectList.map((project, index) => (
                <NavLink key={index} to={`/my-project/${project.project_id}`}>
-               <div className="card w-full border mt-2 p-2 rounded bg-gray-100 hover:bg-gray-50 hover:shadow">
-                  <span className="rounded-full bg-gray-300 p-0.5 text-green-500 text-xs font-semibold px-3 w-">{project.category}</span>
-                  <div className="project-title text-lg font-bold">{project.project_title}</div>
-                  <div className="info mt-2 bg-gray-50 p-2 w-5/12">
-                     <p className="text-xs font-bold text-gray-500">{project.author}</p>
-                     <p className="text-xs mt-0.5">{formatDate(project.created_at)}</p>
-                  </div>
-               </div>
-            </NavLink>
-            ))}
+                  <ShowRoomCard project={project} />
+               </NavLink>
+               ))}
+            </div>
+          
          
          </div>
       </div> 
